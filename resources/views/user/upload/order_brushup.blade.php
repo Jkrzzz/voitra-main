@@ -1,0 +1,157 @@
+@extends('user.layouts.upload_layout')
+@section('title','ブラッシュアップ予約')
+@php
+$languages = config('const.language');
+@endphp
+@section('content')
+<div class="main-content">
+  <div class="d-title">
+    <span class="page-title">@yield('title')</span>
+  </div>
+  <div class="process-bar">
+    <div id="steps" class="brush-up">
+      <div class="stepper done">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.864 18.84C19.8494 18.8213 19.8308 18.8062 19.8095 18.7958C19.7882 18.7854 19.7648 18.78 19.7411 18.78C19.7174 18.78 19.6941 18.7854 19.6728 18.7958C19.6515 18.8062 19.6328 18.8213 19.6182 18.84L17.4331 21.6076C17.4151 21.6306 17.4039 21.6582 17.4009 21.6873C17.3978 21.7164 17.403 21.7458 17.4158 21.772C17.4286 21.7983 17.4486 21.8205 17.4734 21.8359C17.4982 21.8514 17.5268 21.8596 17.556 21.8595H18.9978V26.5939C18.9978 26.6798 19.068 26.7501 19.1539 26.7501H20.3245C20.4103 26.7501 20.4806 26.6798 20.4806 26.5939V21.8615H21.9262C22.0569 21.8615 22.1291 21.7111 22.0491 21.6095L19.864 18.84Z" fill="#B0B0B0" />
+          <path d="M25.5816 17.0371C24.688 14.6777 22.4112 13 19.7443 13C17.0773 13 14.8005 14.6758 13.9069 17.0352C12.235 17.4746 11 19 11 20.8125C11 22.9707 12.7461 24.7188 14.9 24.7188H15.6823C15.7682 24.7188 15.8384 24.6484 15.8384 24.5625V23.3906C15.8384 23.3047 15.7682 23.2344 15.6823 23.2344H14.9C14.2425 23.2344 13.6241 22.9727 13.1636 22.498C12.7051 22.0254 12.4613 21.3887 12.4827 20.7285C12.5003 20.2129 12.6759 19.7285 12.9939 19.3203C13.3197 18.9043 13.7762 18.6016 14.2835 18.4668L15.0229 18.2734L15.2941 17.5586C15.4619 17.1133 15.696 16.6973 15.9906 16.3203C16.2814 15.9467 16.6259 15.6183 17.0129 15.3457C17.8147 14.7813 18.759 14.4824 19.7443 14.4824C20.7295 14.4824 21.6738 14.7813 22.4756 15.3457C22.8639 15.6191 23.2072 15.9473 23.4979 16.3203C23.7925 16.6973 24.0266 17.1152 24.1944 17.5586L24.4636 18.2715L25.2011 18.4668C26.2585 18.752 26.998 19.7148 26.998 20.8125C26.998 21.459 26.7463 22.0684 26.2898 22.5254C26.0659 22.7508 25.7995 22.9296 25.5062 23.0513C25.2128 23.173 24.8983 23.2352 24.5807 23.2344H23.7984C23.7125 23.2344 23.6423 23.3047 23.6423 23.3906V24.5625C23.6423 24.6484 23.7125 24.7188 23.7984 24.7188H24.5807C26.7346 24.7188 28.4807 22.9707 28.4807 20.8125C28.4807 19.002 27.2496 17.4785 25.5816 17.0371Z" fill="#B0B0B0" />
+          <circle cx="20" cy="20" r="18.75" transform="rotate(-180 20 20)" stroke="#B0B0B0" stroke-width="2.5" />
+        </svg>
+        <p class="stepper-title">ブラッシュアップ予約</p>
+      </div>
+      <div class="stepper">
+        <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20.0156" cy="20" r="18.75" transform="rotate(-180 20.0156 20)" fill="white" stroke="#B0B0B0" stroke-width="2.5" />
+          <path d="M17.3686 20.8013L25.8391 10L27.7215 12.4003L19.2509 23.2015L17.3686 20.8013Z" fill="#B0B0B0" />
+          <path d="M15.4862 28.0021L8.89798 19.6011L7.01562 22.0014L13.6039 30.4024L15.4862 28.0021Z" fill="#B0B0B0" />
+          <path d="M19.2509 25.6018L14.545 19.6011L12.6627 22.0014L19.2509 30.4024L32.4274 13.6004L30.545 11.2001L19.2509 25.6018Z" fill="#B0B0B0" />
+        </svg>
+        <p class="stepper-title">予約完了</p>
+      </div>
+      <div class="stepper">
+        <svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20.0153" cy="20" r="18.75" transform="rotate(-180 20.0153 20)" fill="white" stroke="#B0B0B0" stroke-width="2.5" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0153 14.6667C12.0153 15.5871 12.7615 16.3333 13.682 16.3333C14.6025 16.3333 15.3487 15.5871 15.3487 14.6667C15.3487 13.7462 14.6025 13 13.682 13C12.7615 13 12.0153 13.7462 12.0153 14.6667ZM28.682 13.8333V15.5H17.0153V13.8333H28.682ZM28.682 20.5V18.8333H17.0153V20.5H28.682ZM17.0153 25.5H28.682V23.8333H17.0153V25.5ZM12.0153 24.6667C12.0153 25.5871 12.7615 26.3333 13.682 26.3333C14.6025 26.3333 15.3487 25.5871 15.3487 24.6667C15.3487 23.7462 14.6025 23 13.682 23C12.7615 23 12.0153 23.7462 12.0153 24.6667ZM13.682 21.3333C12.7615 21.3333 12.0153 20.5871 12.0153 19.6667C12.0153 18.7462 12.7615 18 13.682 18C14.6025 18 15.3487 18.7462 15.3487 19.6667C15.3487 20.5871 14.6025 21.3333 13.682 21.3333Z" fill="#B0B0B0" />
+        </svg>
+
+        <p class="stepper-title">納期・見積り確認</p>
+      </div>
+      <div class="stepper">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18.75" transform="rotate(-180 20 20)" stroke="#B0B0B0" stroke-width="2.5" />
+          <path d="M28 13H12C10.897 13 10 13.897 10 15V27C10 28.103 10.897 29 12 29H28C29.103 29 30 28.103 30 27V15C30 13.897 29.103 13 28 13ZM12 15H28V17H12V15ZM12 27V21H28.001L28.002 27H12Z" fill="#B0B0B0" />
+          <path d="M14 23H21V25H14V23Z" fill="#B0B0B0" />
+        </svg>
+        <p class="stepper-title">確認</p>
+      </div>
+      <div class="stepper">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18.75" transform="rotate(-180 20 20)" stroke="#B0B0B0" stroke-width="2.5" />
+          <path d="M13 26.7143H29V29H13V26.7143Z" fill="#B0B0B0" />
+          <path d="M26.2457 13L18.7143 20.5314L15.7543 17.5829L14.1429 19.1943L18.7143 23.7657L27.8571 14.6229L26.2457 13Z" fill="#B0B0B0" />
+        </svg>
+        <p class="stepper-title">完了</p>
+      </div>
+    </div>
+  </div>
+  <div class="upload-container">
+    <form action="/audio/brushup-request" method="post" id="request-brushup">
+      <div class="block">
+        <div class="block-header row">
+          <div class="col-xl-8 col-lg-5 col-sm-6">
+            <img src="{{ asset('user/images/block-header.png') }}">
+            <h2>ブラッシュアッププラン</h2>
+          </div>
+        </div>
+        <div class="block-content">
+          @foreach ($audios as $audio)
+          <div class="audio-item">
+            <div class="item-header row">
+              <div class="col-md-8 col-12 order">
+                <div class="order-header">
+                  <p class="header-title audio-name font-weight-bold">{{ $audio->name }}</p>
+                  <p class="order-lang">{{ !is_null($audio->language) ? $languages[$audio->language] : '' }}</p>
+                </div>
+                <audio class="audio-player">
+                  <source src="{{ $audio->url }}" type="audio/flac">
+                </audio>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="order-header">
+                  <p class="header-title font-weight-bold text-right">文字</p>
+                </div>
+                <input value="{{ $audio->length . '文字'}}" class="form-control text-right" disabled>
+              </div>
+            </div>
+          </div>
+          @endforeach
+          <div class="audio-item">
+            <div class="item-header row">
+              <div class="col-md-8 col-12">
+                <div class="order-header">
+                  <span class="header-title font-weight-bold">納品希望日</span>
+                </div>
+                <input name="user_estimate" type='text' class="form-control date" />
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="order-header text-right">
+                  <span class="header-title font-weight-bold">合計文字</span>
+                </div>
+                <input value="{{ $data->total_time . '文字'}}" class="form-control text-right" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block-content">
+          <div class="col-md-12">
+            <hr>
+          </div>
+          <div class="box-cont m-3">
+            <div class="block-list" style="background-color: #EFEFEF; border-radius: 10px; padding: 15px 10px">
+              <span class="page-title">注意事項</span>
+              <ul style="margin-top: 10px;">
+                <li>雑音などが含まれている場合や、認識が困難な専門用語や固有名詞などが含まれる場合は、正確にテキスト化できない可能性がございます。</li>
+                <li>納品予定日の通知から24時間以上経過しますと、納期にも遅れが生じますので、お申込みいただくことができなくなります。予めご了承下さい。</li>
+                <li>ブラッシュアッププランの対応言語は日本語のみとなります。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {{ csrf_field() }}
+        <input id="order-id" type="text" name="order_id" value="{{$data->id}}" hidden>
+    </form>
+    <div class="upload-button group-btn-block">
+      <a class="btn custom-btn btn-default" href="/audio">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle r="11.5" transform="matrix(-1 0 0 1 12 12)" stroke="black" />
+          <path d="M12.2404 6.85693L7.20039 11.9998L12.2404 17.1426M18.4004 11.9998H7.20039H18.4004Z" stroke="black" stroke-width="2" />
+        </svg>
+        戻る
+      </a>
+      <button class="btn custom-btn btn-primary" id="request">
+        ブラッシュアップ仮予約
+        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12.5" cy="12" r="11.5" stroke="black" />
+          <path d="M12.3619 6.85693L17.3275 11.9998L12.3619 17.1426M6.29297 11.9998H17.3275H6.29297Z" stroke="black" stroke-width="2" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+<input type="hidden" value="{{$time_processing_daily->value}}" name="time_processing_daily">
+<input type="hidden" value="{{$day_off->value}}" name="day_off">
+<input type="hidden" value="{{$time_end_daily->value}}" name="time_end_daily">
+<input type="hidden" value="{{$day_delay->value}}" name="day_delay">
+<input type="hidden" value="{{$audio_duration->value}}" name="audio_duration">
+<input type="hidden" value="{{$total_duration_processing}}" name="total_duration_processing">
+@include('user.modal.confirm_modal')
+<script id="rendered-js">
+  let audio = document.querySelectorAll('.audio-player');
+  audio.forEach(function(e) {
+    let p = new Plyr(e);
+    window.player = p;
+  })
+</script>
+
+<script src="{{ asset('/user/js/brush.js')}} "></script>
+@endsection
